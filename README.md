@@ -2,16 +2,16 @@
 
 ### Get and display the entire list of contacts in the form of a table (console.table)
 
-- [`AllContacts`](https://monosnap.com/file/Q731dSrmYP3l7KjpIfqF8TL0IFk0ss)
+- [`AllContacts`](https://monosnap.com/file/7PYh6Mris0iqyzFwkk7eCxYKibKa10)
 
 ### Get contact by id
 
-- [`GetContact`](https://monosnap.com/file/XncZhcwEphCZRUqnXuzu87Z3r7039y)
+- [`GetContact`](https://monosnap.com/file/WuugrMnjJfsOK0d1wJ3yY4I1wbYfxN)
 
 ### Add the contact
 
-- [`AddContact`](https://monosnap.com/file/LY8KMJLFvoL4vdy9hkKqFn6ujttidG)
+- [`AddContact`](https://monosnap.com/file/jJNRuLRQCzE8RbhQDY3em66EC9udVa)
 
 ### Delete the contact
 
-- [`DeleteContact`](https://monosnap.com/file/N8IgDJAwJt9WJZO9jSyFAaCMYJIKIM)
+- [`DeleteContact`](https://monosnap.com/file/FbAYK5RxNUxPZOhbfdo2KBx8TRZYLX)

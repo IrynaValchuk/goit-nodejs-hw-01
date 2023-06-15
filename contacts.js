@@ -4,35 +4,58 @@ const { nanoid } = require("nanoid");
 
 const contactsPath = path.join(__dirname, "db", "contacts.json");
 
+const updateContacts = async (contacts) => {
+  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+};
+
 const listContacts = async () => {
-  const data = await fs.readFile(contactsPath);
-  return JSON.parse(data);
+  try {
+    const contacts = await fs.readFile(contactsPath);
+    return JSON.parse(contacts);
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const getContactById = async (contactId) => {
-  const contacts = await listContacts();
-  const result = contacts.find((contact) => contact.id === contactId);
-  return result || null;
+  try {
+    const contacts = await listContacts();
+    const contactById = contacts.find((contact) => contact.id === contactId);
+    return contactById || null;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const removeContact = async (contactId) => {
-  const contacts = await listContacts();
-  const result = contacts.filter((contact) => contact.id !== contactId);
-  await fs.writeFile(contactsPath, JSON.stringify(result, null, 2));
-  return result;
+  try {
+    const contacts = await listContacts();
+    const removedContact = await getContactById(contactId);
+    const filteredContacts = contacts.filter(
+      (contact) => contact.id !== contactId
+    );
+    await updateContacts(filteredContacts);
+    return removedContact;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 const addContact = async (name, email, phone) => {
-  const contacts = await listContacts();
-  const newContact = {
-    id: nanoid(),
-    name,
-    email,
-    phone,
-  };
-  contacts.push(newContact);
-  await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
-  return contacts;
+  try {
+    const contacts = await listContacts();
+    const newContact = {
+      id: nanoid(),
+      name,
+      email,
+      phone,
+    };
+    contacts.push(newContact);
+    await updateContacts(contacts);
+    return newContact;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 module.exports = {
